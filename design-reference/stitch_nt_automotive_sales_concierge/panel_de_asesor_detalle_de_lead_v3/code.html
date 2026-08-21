@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detalles del Lead - Concesionario</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#f2ca50",
+                        "inverse-primary": "#735c00",
+                        "on-tertiary-fixed": "#00174b",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-fixed": "#241a00",
+                        "outline": "#99907c",
+                        "surface-container-highest": "#353534",
+                        "inverse-surface": "#e5e2e1",
+                        "on-background": "#e5e2e1",
+                        "error-container": "#93000a",
+                        "secondary": "#46eaed",
+                        "surface-container": "#201f1f",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#2ddbde",
+                        "outline-variant": "#4d4635",
+                        "surface-bright": "#393939",
+                        "on-surface": "#e5e2e1",
+                        "on-primary": "#3c2f00",
+                        "on-secondary-fixed": "#002020",
+                        "background": "#131313",
+                        "secondary-fixed": "#5af8fb",
+                        "surface-variant": "#353534",
+                        "surface-container-low": "#1c1b1b",
+                        "surface": "#131313",
+                        "on-secondary-container": "#005253",
+                        "secondary-container": "#00cdd0",
+                        "tertiary": "#bfcdff",
+                        "on-secondary-fixed-variant": "#004f51",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-tertiary": "#082b72",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#dbe1ff",
+                        "on-surface-variant": "#d0c5af",
+                        "primary-fixed": "#ffe088",
+                        "tertiary-container": "#97b0ff",
+                        "surface-tint": "#e9c349",
+                        "on-tertiary-fixed-variant": "#27438a",
+                        "surface-dim": "#131313",
+                        "on-primary-container": "#554300",
+                        "surface-container-high": "#2a2a2a",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#003738",
+                        "primary-fixed-dim": "#e9c349",
+                        "primary-container": "#d4af37",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#254188",
+                        "success": "#4ade80"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "xl": "40px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "technical-label": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "technical-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #131313; }
+        ::-webkit-scrollbar-thumb { background: #353534; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4d4635; }
+        
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .data-strip-leader {
+            flex-grow: 1;
+            border-bottom: 1px dotted var(--tw-colors-outline-variant);
+            margin: 0 8px;
+            position: relative;
+            top: -4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg min-h-screen antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface fixed top-0 w-full border-b border-outline-variant flex justify-between items-center px-margin-desktop h-16 z-50 transition-colors">
+<div class="flex items-center">
+<span class="font-headline-md text-headline-md text-primary tracking-tighter">NT Automotive Agent</span>
+</div>
+<div class="flex items-center space-x-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80 p-sm rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80 p-sm rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar (Hidden on Mobile, flex on MD) -->
+<nav class="bg-surface-container dark:bg-surface-container h-full w-64 fixed left-0 top-0 border-r border-outline-variant flex-col py-lg space-y-md pt-24 hidden md:flex z-40 transition-colors">
+<div class="px-lg mb-lg">
+<div class="flex items-center space-x-sm mb-xs">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="local_mall">local_mall</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-primary">DEALER PREMIER</span>
+</div>
+<span class="font-technical-label text-technical-label text-on-surface-variant pl-10">Agente Autorizado</span>
+</div>
+<ul class="flex-col w-full flex space-y-sm">
+<!-- Active Tab: Inicio -->
+<li>
+<a class="text-primary border-l-2 border-primary bg-surface-container-high hover:bg-surface-container-highest transition-all duration-200 ease-in-out flex items-center px-lg py-sm w-full group" href="#">
+<span class="material-symbols-outlined mr-md group-hover:scale-110 transition-transform" data-icon="smart_toy">smart_toy</span>
+<span class="font-technical-label text-technical-label">Inicio</span>
+</a>
+</li>
+<!-- Inactive Tabs -->
+<li>
+<a class="text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all duration-200 ease-in-out flex items-center px-lg py-sm w-full border-l-2 border-transparent group" href="#">
+<span class="material-symbols-outlined mr-md group-hover:scale-110 transition-transform" data-icon="directions_car">directions_car</span>
+<span class="font-technical-label text-technical-label">Leads</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all duration-200 ease-in-out flex items-center px-lg py-sm w-full border-l-2 border-transparent group" href="#">
+<span class="material-symbols-outlined mr-md group-hover:scale-110 transition-transform" data-icon="build">build</span>
+<span class="font-technical-label text-technical-label">Agenda</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant hover:text-primary hover:bg-surface-container-highest transition-all duration-200 ease-in-out flex items-center px-lg py-sm w-full border-l-2 border-transparent group" href="#">
+<span class="material-symbols-outlined mr-md group-hover:scale-110 transition-transform" data-icon="person">person</span>
+<span class="font-technical-label text-technical-label">Perfil</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Canvas -->
+<main class="md:ml-64 pt-24 px-margin-mobile md:px-margin-desktop pb-xl min-h-screen">
+<div class="max-w-[1200px] mx-auto">
+<!-- Page Header -->
+<div class="flex items-center justify-between mb-lg">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface">Mendoza, Carlos</h1>
+<p class="font-technical-label text-technical-label text-primary mt-xs uppercase tracking-wider">ID: L-8842-X • Lead Calificado</p>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Panel: Customer Data -->
+<div class="lg:col-span-8 space-y-lg">
+<div class="bg-[#1E1E1E] border border-[#2A2A2A] rounded-lg p-lg relative overflow-hidden">
+<!-- subtle gradient background accent -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+<div class="flex items-center mb-md border-b border-outline-variant pb-sm">
+<span class="material-symbols-outlined text-on-surface-variant mr-sm" data-icon="database">database</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Datos Operativos</h2>
+</div>
+<!-- Telemetry Data Strips -->
+<div class="flex flex-col space-y-md font-technical-label text-technical-label">
+<div class="flex items-end">
+<span class="text-on-surface-variant uppercase w-1/3">Modelo de Interés</span>
+<div class="data-strip-leader"></div>
+<span class="text-on-surface text-right">SUV Premium Híbrido</span>
+</div>
+<div class="flex items-end">
+<span class="text-on-surface-variant uppercase w-1/3">Uso Previsto</span>
+<div class="data-strip-leader"></div>
+<span class="text-on-surface text-right">Viajes Largos / Familia</span>
+</div>
+<div class="flex items-end">
+<span class="text-on-surface-variant uppercase w-1/3">Preferencia Financiación</span>
+<div class="data-strip-leader"></div>
+<span class="text-on-surface text-right">60 meses</span>
+</div>
+<div class="flex items-end">
+<span class="text-on-surface-variant uppercase w-1/3">Presupuesto Estimado</span>
+<div class="data-strip-leader"></div>
+<span class="text-primary text-right">$85,000 USD</span>
+</div>
+<div class="flex items-end">
+<span class="text-on-surface-variant uppercase w-1/3">Vehículo Actual (Trade-in)</span>
+<div class="data-strip-leader"></div>
+<span class="text-on-surface text-right">SUV 2019 (Tasación Pendiente)</span>
+</div>
+<div class="flex items-end">
+<span class="text-on-surface-variant uppercase w-1/3">Estado Test Drive</span>
+<div class="data-strip-leader"></div>
+<span class="text-success text-right flex items-center">
+                                    Agendado 
+                                    <span class="material-symbols-outlined text-[14px] ml-xs" data-icon="check_circle">check_circle</span>
+</span>
+</div>
+<div class="flex items-end">
+<span class="text-on-surface-variant uppercase w-1/3">Próxima Cita</span>
+<div class="data-strip-leader"></div>
+<span class="text-on-surface text-right">15 Nov, 10:00 AM</span>
+</div>
+<div class="flex items-end">
+<span class="text-on-surface-variant uppercase w-1/3">Sucursal Asignada</span>
+<div class="data-strip-leader"></div>
+<span class="text-on-surface text-right">Buenos Aires (Central)</span>
+</div>
+<div class="flex items-end">
+<span class="text-on-surface-variant uppercase w-1/3">Observaciones</span>
+<div class="data-strip-leader"></div>
+<span class="text-on-surface text-right">Cliente exigente con acabados interiores</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel: Insights & Action -->
+<div class="lg:col-span-4 flex flex-col space-y-lg">
+<!-- Top Right: Lead Score Gauge -->
+<div class="bg-[#1E1E1E] border border-[#2A2A2A] rounded-lg p-lg flex flex-col items-center justify-center relative">
+<h3 class="font-technical-label text-technical-label text-on-surface-variant uppercase absolute top-lg left-lg">Puntuación Predictiva</h3>
+<!-- SVG Gauge Minimalist -->
+<div class="relative w-40 h-40 mt-md">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Background Circle -->
+<circle cx="50" cy="50" fill="none" r="40" stroke="var(--tw-colors-surface-container-high)" stroke-width="4"></circle>
+<!-- Progress Circle (95%) -->
+<circle class="transition-all duration-1000 ease-out" cx="50" cy="50" fill="none" r="40" stroke="var(--tw-colors-success)" stroke-dasharray="251.2" stroke-dashoffset="12.56" stroke-width="4"></circle>
+</svg>
+<!-- Inner Text -->
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg text-[40px] leading-none text-success">95</span>
+<span class="font-technical-label text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">/100</span>
+</div>
+</div>
+</div>
+<!-- Bottom Right: AI Summary & Action -->
+<div class="bg-[#1E1E1E] border border-[#2A2A2A] border-t-success/30 rounded-lg p-lg flex-grow flex flex-col relative overflow-hidden group hover:border-success/50 transition-colors">
+<!-- AI Visualizer (Pulsing line at bottom) -->
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-success/50 animate-pulse"></div>
+<div class="flex items-center mb-md">
+<span class="material-symbols-outlined text-success mr-sm animate-pulse" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Resumen de la Oportunidad (IA)</h3>
+</div>
+<div class="bg-[#0A0A0A] border border-[#2A2A2A] rounded p-md mb-lg flex-grow">
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed border-l-2 border-success pl-sm">
+                                "Cliente busca upgrade a premium para viajes largos. Alta probabilidad de cierre con financiación estructurada. Sugiero enfocar presentación en confort de cabina y opciones de leasing a 60 meses."
+                            </p>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary hover:bg-primary-fixed text-on-primary font-headline-md-mobile text-headline-md-mobile py-md rounded-lg flex items-center justify-center transition-all active:scale-[0.98] shadow-[0_0_15px_rgba(242,202,80,0.1)] hover:shadow-[0_0_20px_rgba(242,202,80,0.2)]">
+✨ Preparar conversación
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

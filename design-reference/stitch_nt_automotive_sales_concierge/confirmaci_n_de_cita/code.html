@@ -1,0 +1,185 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Cita Confirmada - NT AUTOMOTIVE</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts for Design System -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS with specific configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#241a00",
+                        "on-tertiary": "#082b72",
+                        "on-tertiary-fixed-variant": "#27438a",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed": "#5af8fb",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-container": "#00cdd0",
+                        "primary": "#f2ca50",
+                        "on-primary-container": "#554300",
+                        "on-tertiary-fixed": "#00174b",
+                        "tertiary-fixed": "#dbe1ff",
+                        "surface-container": "#201f1f",
+                        "surface-container-high": "#2a2a2a",
+                        "primary-fixed-dim": "#e9c349",
+                        "inverse-primary": "#735c00",
+                        "surface": "#131313",
+                        "primary-container": "#d4af37",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-variant": "#353534",
+                        "on-surface": "#e5e2e1",
+                        "on-primary": "#3c2f00",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-bright": "#393939",
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#2ddbde",
+                        "tertiary": "#bfcdff",
+                        "primary-fixed": "#ffe088",
+                        "on-secondary": "#003738",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "surface-tint": "#e9c349",
+                        "tertiary-container": "#97b0ff",
+                        "on-secondary-fixed-variant": "#004f51",
+                        "on-secondary-fixed": "#002020",
+                        "outline": "#99907c",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-container": "#005253",
+                        "outline-variant": "#4d4635",
+                        "on-background": "#e5e2e1",
+                        "on-primary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#313030",
+                        "surface-dim": "#131313",
+                        "secondary": "#46eaed",
+                        "on-tertiary-container": "#254188"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin-desktop": "32px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "headline-md-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "technical-label": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "technical-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-lg antialiased selection:bg-secondary selection:text-on-secondary">
+<!-- Simplified Top Header (Suppressed navigation for linear flow) -->
+<header class="w-full flex justify-center items-center h-16 border-b border-outline-variant bg-surface px-margin-mobile md:px-margin-desktop z-50">
+<div class="font-headline-md text-headline-md text-primary tracking-tighter uppercase">
+            NT AUTOMOTIVE
+        </div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop py-xl relative">
+<!-- Background Ambient Glow (Subtle) -->
+<div class="absolute inset-0 pointer-events-none flex justify-center items-center overflow-hidden z-0">
+<div class="w-[600px] h-[600px] bg-secondary opacity-5 blur-[150px] rounded-full mix-blend-screen"></div>
+</div>
+<div class="w-full max-w-2xl flex flex-col items-center relative z-10">
+<!-- Success Indicator -->
+<div class="relative flex items-center justify-center w-24 h-24 mb-xl">
+<!-- Static Outer Ring -->
+<div class="absolute inset-0 rounded-full border border-secondary opacity-30"></div>
+<!-- Pulsing Inner Ring -->
+<div class="absolute inset-2 rounded-full border border-secondary animate-ping opacity-20"></div>
+<!-- Icon -->
+<span class="material-symbols-outlined text-secondary" style="font-size: 48px; font-variation-settings: 'FILL' 1;">
+                    check_circle
+                </span>
+</div>
+<!-- Page Header -->
+<h1 class="font-display-lg text-display-lg text-on-surface mb-lg text-center tracking-tight">
+                Cita confirmada
+            </h1>
+<!-- Summary Bento Card -->
+<div class="w-full bg-surface-container border border-outline-variant p-lg rounded-lg flex flex-col space-y-md relative overflow-hidden shadow-2xl shadow-black/50 backdrop-blur-sm">
+<!-- Premium Accent Line -->
+<div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] animate-[pulse_3s_ease-in-out_infinite]"></div>
+<!-- Data Strip: Client -->
+<div class="flex flex-row items-end justify-between border-b border-outline-variant/50 pb-sm">
+<span class="font-technical-label text-technical-label text-on-surface-variant uppercase opacity-70">Client</span>
+<span class="font-body-lg text-body-lg text-on-surface text-right">Carlos Mendoza</span>
+</div>
+<!-- Data Strip: Vehicle -->
+<div class="flex flex-row items-end justify-between border-b border-outline-variant/50 pb-sm">
+<span class="font-technical-label text-technical-label text-on-surface-variant uppercase opacity-70">Vehicle</span>
+<span class="font-body-lg text-body-lg text-on-surface text-right">2023 GT Grand Tourer</span>
+</div>
+<!-- Data Strip: Branch -->
+<div class="flex flex-row items-end justify-between border-b border-outline-variant/50 pb-sm">
+<span class="font-technical-label text-technical-label text-on-surface-variant uppercase opacity-70">Branch</span>
+<span class="font-body-lg text-body-lg text-on-surface text-right">Central Premier Service</span>
+</div>
+<!-- Data Strip: Date -->
+<div class="flex flex-row items-end justify-between border-b border-outline-variant/50 pb-sm">
+<span class="font-technical-label text-technical-label text-on-surface-variant uppercase opacity-70">Date</span>
+<span class="font-body-lg text-body-lg text-secondary text-right font-medium">15 Nov 2024</span>
+</div>
+<!-- Data Strip: Time -->
+<div class="flex flex-row items-end justify-between border-b border-outline-variant/50 pb-sm">
+<span class="font-technical-label text-technical-label text-on-surface-variant uppercase opacity-70">Time</span>
+<span class="font-body-lg text-body-lg text-secondary text-right font-medium">10:00 AM</span>
+</div>
+<!-- Data Strip: Reason -->
+<div class="flex flex-col sm:flex-row sm:items-start justify-between pb-sm pt-xs gap-2">
+<span class="font-technical-label text-technical-label text-on-surface-variant uppercase opacity-70 sm:mt-1 whitespace-nowrap">Reason</span>
+<span class="font-body-lg text-body-lg text-on-surface sm:text-right max-w-[80%] leading-relaxed">
+                        Scheduled Maintenance &amp; Software Update
+                    </span>
+</div>
+</div>
+<!-- Closing Message -->
+<p class="font-body-lg text-body-lg text-on-surface-variant text-center mt-xl mb-xl max-w-md mx-auto leading-relaxed">
+                Un asesor te contactará en breve para ultimar detalles.
+            </p>
+<!-- Primary Action -->
+<button class="bg-primary text-on-primary px-xl py-md rounded font-technical-label text-technical-label uppercase tracking-widest flex items-center space-x-3 hover:bg-primary-fixed hover:-translate-y-[1px] transition-all duration-200 shadow-[0_0_15px_rgba(242,202,80,0.15)] hover:shadow-[0_0_25px_rgba(242,202,80,0.25)]">
+<span>Volver al inicio</span>
+<span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+</button>
+</div>
+</main>
+</body></html>

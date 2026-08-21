@@ -1,0 +1,255 @@
+<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Descubrimiento - Financiación | NT AUTOMOTIVE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#241a00",
+                        "on-tertiary": "#082b72",
+                        "on-tertiary-fixed-variant": "#27438a",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed": "#5af8fb",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-container": "#00cdd0",
+                        "primary": "#f2ca50",
+                        "on-primary-container": "#554300",
+                        "on-tertiary-fixed": "#00174b",
+                        "tertiary-fixed": "#dbe1ff",
+                        "surface-container": "#201f1f",
+                        "surface-container-high": "#2a2a2a",
+                        "primary-fixed-dim": "#e9c349",
+                        "inverse-primary": "#735c00",
+                        "surface": "#131313",
+                        "primary-container": "#d4af37",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-variant": "#353534",
+                        "on-surface": "#e5e2e1",
+                        "on-primary": "#3c2f00",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-bright": "#393939",
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#2ddbde",
+                        "tertiary": "#bfcdff",
+                        "primary-fixed": "#ffe088",
+                        "on-secondary": "#003738",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "surface-tint": "#e9c349",
+                        "tertiary-container": "#97b0ff",
+                        "on-secondary-fixed-variant": "#004f51",
+                        "on-secondary-fixed": "#002020",
+                        "outline": "#99907c",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-container": "#005253",
+                        "outline-variant": "#4d4635",
+                        "on-background": "#e5e2e1",
+                        "on-primary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#313030",
+                        "surface-dim": "#131313",
+                        "secondary": "#46eaed",
+                        "on-tertiary-container": "#254188"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin-desktop": "32px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "xs": "4px"
+                    },
+                    fontFamily: {
+                        "headline-sm": ["Inter"],
+                        "headline-md-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "technical-label": ["JetBrains Mono"]
+                    },
+                    fontSize: {
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "technical-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .technical-border {
+            border: 1px solid #2A2A2A;
+        }
+        
+        .focus-ring:focus-within {
+            border-color: #f2ca50; /* primary */
+        }
+        
+        .input-dark {
+            background-color: #0A0A0A;
+        }
+        
+        .accent-bar {
+            width: 4px;
+            height: 100%;
+            background-color: #f2ca50;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col">
+<!-- TopAppBar (From JSON) -->
+<header class="bg-surface dark:bg-surface fixed top-0 w-full border-b border-outline-variant flex justify-between items-center px-margin-desktop h-16 w-full z-50">
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-headline-md text-primary tracking-tighter">NT AUTOMOTIVE</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 pt-16 h-screen">
+<!-- SideNavBar (From JSON) -->
+<nav class="hidden md:flex flex-col py-lg space-y-md bg-surface-container dark:bg-surface-container h-full w-64 fixed left-0 top-16 border-r border-outline-variant z-40">
+<div class="px-md mb-md">
+<h2 class="font-headline-sm text-headline-sm text-primary">DEALER PREMIER</h2>
+<p class="font-technical-label text-technical-label text-on-surface-variant mt-xs uppercase">Authorized Agent</p>
+</div>
+<ul class="flex flex-col gap-unit">
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out font-technical-label text-technical-label" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+                        Assistant
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-primary border-l-2 border-primary bg-surface-container-high hover:bg-surface-container-highest transition-all duration-200 ease-in-out font-technical-label text-technical-label relative" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+                        Inventory
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out font-technical-label text-technical-label" href="#">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+                        Service
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out font-technical-label text-technical-label" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+                        Profile
+                    </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop overflow-y-auto">
+<div class="max-w-[800px] mx-auto mt-xl">
+<!-- Assistant Block -->
+<div class="bg-surface-container-high technical-border rounded relative p-lg mb-xl">
+<div class="accent-bar rounded-l"></div>
+<div class="flex items-start gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-bright flex items-center justify-center shrink-0 border border-outline-variant">
+<span class="material-symbols-outlined text-primary" data-icon="smart_toy">smart_toy</span>
+</div>
+<div>
+<p class="font-technical-label text-technical-label text-primary mb-xs">SYSTEM INQUIRY</p>
+<h1 class="font-headline-md md:font-display-lg text-headline-md md:text-display-lg text-on-surface">¿Ya tenés un vehículo en mente?</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-sm">Por favor, indicá tus preferencias financieras para que podamos presentarte las opciones más adecuadas dentro de nuestro inventario premium.</p>
+</div>
+</div>
+</div>
+<!-- Input Form -->
+<div class="bg-[#1E1E1E] technical-border rounded p-lg mb-lg">
+<form class="space-y-lg">
+<!-- Question 1: Vehículo en mente -->
+<div class="space-y-sm">
+<label class="font-technical-label text-technical-label text-on-surface-variant block">SELECCIÓN DE VEHÍCULO</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<label class="relative flex items-center p-md technical-border rounded cursor-pointer hover:border-primary transition-colors bg-surface-container-low">
+<input class="form-radio text-primary bg-transparent border-outline-variant focus:ring-primary focus:ring-offset-surface" name="vehicle_status" type="radio" value="yes">
+<span class="ml-sm font-body-lg text-body-lg text-on-surface">Sí, tengo uno en mente</span>
+</label>
+<label class="relative flex items-center p-md technical-border rounded cursor-pointer hover:border-primary transition-colors bg-surface-container-low">
+<input checked="" class="form-radio text-primary bg-transparent border-outline-variant focus:ring-primary focus:ring-offset-surface" name="vehicle_status" type="radio" value="no">
+<span class="ml-sm font-body-lg text-body-lg text-on-surface">No, estoy explorando opciones</span>
+</label>
+</div>
+</div>
+<hr class="border-t border-outline-variant my-md">
+<!-- Question 2: Monto aproximado -->
+<div class="space-y-sm focus-ring technical-border rounded p-xs transition-colors">
+<label class="font-technical-label text-technical-label text-on-surface-variant block px-sm pt-sm" for="amount">MONTO APROXIMADO (USD)</label>
+<div class="relative flex items-center">
+<span class="absolute left-sm text-on-surface-variant font-body-lg">$</span>
+<input class="w-full input-dark text-on-surface font-body-lg rounded border-0 focus:ring-0 pl-xl py-md" id="amount" placeholder="Ej: 50,000" style="background-color: #0A0A0A;" type="number">
+</div>
+</div>
+<!-- Question 3: Plazo deseado -->
+<div class="space-y-sm focus-ring technical-border rounded p-xs transition-colors">
+<label class="font-technical-label text-technical-label text-on-surface-variant block px-sm pt-sm" for="term">PLAZO DESEADO (MESES)</label>
+<select class="w-full input-dark text-on-surface font-body-lg rounded border-0 focus:ring-0 py-md px-sm appearance-none" id="term" style="background-color: #0A0A0A;">
+<option disabled="" selected="" value="">Seleccionar plazo...</option>
+<option value="12">12 Meses</option>
+<option value="24">24 Meses</option>
+<option value="36">36 Meses</option>
+<option value="48">48 Meses</option>
+<option value="60">60 Meses</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-md flex justify-end">
+<button class="bg-primary text-on-primary font-technical-label text-technical-label px-xl py-md rounded hover:bg-primary-container transition-colors flex items-center gap-sm" type="button">
+                                CONTINUAR ANÁLISIS
+                                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- AI Processing Indicator (Hidden by default, shown during transition) -->
+<div class="w-full h-px bg-surface-container-high overflow-hidden relative opacity-0">
+<div class="absolute inset-y-0 left-0 w-1/3 bg-secondary-fixed opacity-50 shadow-[0_0_10px_#5af8fb]"></div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

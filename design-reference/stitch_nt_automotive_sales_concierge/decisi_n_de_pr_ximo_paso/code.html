@@ -1,0 +1,268 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Decision Screen - NT AUTOMOTIVE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#93000a",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed": "#241a00",
+                      "on-tertiary": "#082b72",
+                      "on-tertiary-fixed-variant": "#27438a",
+                      "surface-container-highest": "#353534",
+                      "secondary-fixed": "#5af8fb",
+                      "inverse-surface": "#e5e2e1",
+                      "secondary-container": "#00cdd0",
+                      "primary": "#f2ca50",
+                      "on-primary-container": "#554300",
+                      "on-tertiary-fixed": "#00174b",
+                      "tertiary-fixed": "#dbe1ff",
+                      "surface-container": "#201f1f",
+                      "surface-container-high": "#2a2a2a",
+                      "primary-fixed-dim": "#e9c349",
+                      "inverse-primary": "#735c00",
+                      "surface": "#131313",
+                      "primary-container": "#d4af37",
+                      "surface-container-low": "#1c1b1b",
+                      "surface-variant": "#353534",
+                      "on-surface": "#e5e2e1",
+                      "on-primary": "#3c2f00",
+                      "error": "#ffb4ab",
+                      "on-error": "#690005",
+                      "on-surface-variant": "#d0c5af",
+                      "surface-bright": "#393939",
+                      "background": "#131313",
+                      "secondary-fixed-dim": "#2ddbde",
+                      "tertiary": "#bfcdff",
+                      "primary-fixed": "#ffe088",
+                      "on-secondary": "#003738",
+                      "tertiary-fixed-dim": "#b4c5ff",
+                      "surface-tint": "#e9c349",
+                      "tertiary-container": "#97b0ff",
+                      "on-secondary-fixed-variant": "#004f51",
+                      "on-secondary-fixed": "#002020",
+                      "outline": "#99907c",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-secondary-container": "#005253",
+                      "outline-variant": "#4d4635",
+                      "on-background": "#e5e2e1",
+                      "on-primary-fixed-variant": "#574500",
+                      "inverse-on-surface": "#313030",
+                      "surface-dim": "#131313",
+                      "secondary": "#46eaed",
+                      "on-tertiary-container": "#254188"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "margin-desktop": "32px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "xl": "40px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "headline-md-mobile": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "technical-label": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "technical-label": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(42, 42, 42, 0.8);
+        }
+        
+        .premium-btn-primary {
+            background: linear-gradient(135deg, #f2ca50 0%, #d4af37 100%);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 2px 10px rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .premium-btn-primary:hover {
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.6), 0 4px 15px rgba(212, 175, 55, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .premium-btn-secondary {
+            background: transparent;
+            border: 1px solid #f2ca50;
+            box-shadow: inset 0 0 10px rgba(242, 202, 80, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .premium-btn-secondary:hover {
+            background: rgba(242, 202, 80, 0.1);
+            box-shadow: inset 0 0 15px rgba(242, 202, 80, 0.1);
+        }
+        
+        .ai-pulse {
+            position: relative;
+        }
+        
+        .ai-pulse::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: #46eaed;
+            box-shadow: 0 0 8px #46eaed;
+            animation: pulse-width 2s infinite ease-in-out;
+            opacity: 0.7;
+        }
+        
+        @keyframes pulse-width {
+            0% { width: 40%; opacity: 0.3; }
+            50% { width: 90%; opacity: 0.8; }
+            100% { width: 40%; opacity: 0.3; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-lg overflow-x-hidden selection:bg-primary selection:text-on-primary">
+<!-- Top App Bar (From Shared Components JSON) -->
+<header class="bg-surface dark:bg-surface fixed top-0 w-full border-b border-outline-variant flex justify-between items-center px-margin-desktop h-16 z-50">
+<div class="font-headline-md text-headline-md text-primary tracking-tighter">
+            NT AUTOMOTIVE
+        </div>
+<div class="hidden">
+<!-- Hidden search bar per JSON -->
+</div>
+<div class="flex items-center space-x-md">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80" data-icon="account_circle">account_circle</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80" data-icon="settings">settings</span>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pt-16 flex flex-col items-center justify-center relative min-h-screen">
+<!-- Background Ambient Image -->
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none" data-alt="A cinematic, high-contrast close-up shot of a luxury sports car's metallic bronze and dark carbon fiber interior details. The lighting is dramatic, with soft, directional rim light highlighting the precise, engineered curves of the dashboard. The mood is sophisticated, technical, and exclusive, reflecting a premium automotive brand aesthetic. Deep blacks dominate the shadows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA6q3HiPUbEIK4jg38fWCPh1MhK-PKYIt5NROgUuYng85L24csH9rf2iqZ72EAFs7mFwAJQ_JWGrNxw_Ol7HznGPCZfvhh_najRsl2WCCZG-SMTTu3uJ54QZtELksxyObi3WnXw5RU060uKGs7bGtA3Ou-zoKiWdJ86piADHExOFpgfQbmuXf33DusgpPCQWI7Y_e86eNJT7QRZHS6Z7whRZxQqy2jtktcyVROdMvIxxZeZAxLDN6yIMQ')"></div>
+<div class="absolute inset-0 z-0 bg-gradient-to-t from-background via-transparent to-background pointer-events-none"></div>
+<!-- Decision Container -->
+<div class="w-full max-w-[800px] px-margin-mobile md:px-margin-desktop relative z-10 flex flex-col items-center">
+<!-- AI Assistant Message -->
+<div class="glass-panel w-full p-lg md:p-xl rounded-xl mb-xl relative overflow-hidden flex flex-col items-center text-center ai-pulse">
+<span class="material-symbols-outlined text-primary mb-md" data-icon="smart_toy" style="font-variation-settings: 'FILL' 1; font-size: 32px;">smart_toy</span>
+<p class="font-display-lg text-display-lg text-on-surface mb-sm">
+                    Ya tengo una idea bastante clara de lo que buscás
+                </p>
+<p class="font-technical-label text-technical-label text-on-surface-variant">
+                    SISTEMA DE ASISTENCIA INTELIGENTE NT
+                </p>
+</div>
+<!-- Action Options Grid -->
+<div class="w-full grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Option 1: Hablar con un asesor -->
+<button class="premium-btn-primary rounded-lg p-md flex flex-col items-center justify-center text-on-primary group min-h-[140px] w-full cursor-pointer relative overflow-hidden">
+<div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+<span class="material-symbols-outlined mb-sm" data-icon="support_agent" style="font-variation-settings: 'FILL' 1; font-size: 28px;">support_agent</span>
+<span class="font-headline-sm text-headline-sm text-center">Hablar con un asesor</span>
+</button>
+<!-- Option 2: Reservar una cita -->
+<button class="premium-btn-secondary rounded-lg p-md flex flex-col items-center justify-center text-primary group min-h-[140px] w-full cursor-pointer relative overflow-hidden">
+<span class="material-symbols-outlined mb-sm transition-transform duration-300 group-hover:scale-110" data-icon="event_available" style="font-size: 28px;">event_available</span>
+<span class="font-headline-sm text-headline-sm text-center">Reservar una cita</span>
+</button>
+<!-- Option 3: Seguir consultando -->
+<button class="bg-surface-container-high border border-outline-variant hover:border-secondary hover:text-secondary rounded-lg p-md flex flex-col items-center justify-center text-on-surface-variant group min-h-[140px] w-full cursor-pointer transition-all duration-300">
+<span class="material-symbols-outlined mb-sm transition-transform duration-300 group-hover:translate-x-1" data-icon="chat" style="font-size: 28px;">chat</span>
+<span class="font-headline-sm text-headline-sm text-center">Seguir consultando</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

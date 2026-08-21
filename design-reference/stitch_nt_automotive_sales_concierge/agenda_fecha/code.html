@@ -1,0 +1,271 @@
+<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Agenda Paso 2 - Seleccionar Fecha</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#93000a",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed": "#241a00",
+                      "on-tertiary": "#082b72",
+                      "on-tertiary-fixed-variant": "#27438a",
+                      "surface-container-highest": "#353534",
+                      "secondary-fixed": "#5af8fb",
+                      "inverse-surface": "#e5e2e1",
+                      "secondary-container": "#00cdd0",
+                      "primary": "#f2ca50",
+                      "on-primary-container": "#554300",
+                      "on-tertiary-fixed": "#00174b",
+                      "tertiary-fixed": "#dbe1ff",
+                      "surface-container": "#201f1f",
+                      "surface-container-high": "#2a2a2a",
+                      "primary-fixed-dim": "#e9c349",
+                      "inverse-primary": "#735c00",
+                      "surface": "#131313",
+                      "primary-container": "#d4af37",
+                      "surface-container-low": "#1c1b1b",
+                      "surface-variant": "#353534",
+                      "on-surface": "#e5e2e1",
+                      "on-primary": "#3c2f00",
+                      "error": "#ffb4ab",
+                      "on-error": "#690005",
+                      "on-surface-variant": "#d0c5af",
+                      "surface-bright": "#393939",
+                      "background": "#131313",
+                      "secondary-fixed-dim": "#2ddbde",
+                      "tertiary": "#bfcdff",
+                      "primary-fixed": "#ffe088",
+                      "on-secondary": "#003738",
+                      "tertiary-fixed-dim": "#b4c5ff",
+                      "surface-tint": "#e9c349",
+                      "tertiary-container": "#97b0ff",
+                      "on-secondary-fixed-variant": "#004f51",
+                      "on-secondary-fixed": "#002020",
+                      "outline": "#99907c",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-secondary-container": "#005253",
+                      "outline-variant": "#4d4635",
+                      "on-background": "#e5e2e1",
+                      "on-primary-fixed-variant": "#574500",
+                      "inverse-on-surface": "#313030",
+                      "surface-dim": "#131313",
+                      "secondary": "#46eaed",
+                      "on-tertiary-container": "#254188"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "margin-desktop": "32px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "xl": "40px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "headline-sm": ["Inter"],
+                      "headline-md-mobile": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "technical-label": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "technical-label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            background-color: #121212;
+            color: #e5e2e1;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a2a;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4d4635;
+        }
+        
+        .glass-panel {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid #2a2a2a;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-lg">
+<!-- TopAppBar (Transactional - Hidden Nav, simplified header) -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant fixed top-0 w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 z-50">
+<div class="flex items-center gap-sm cursor-pointer hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+<span class="font-technical-label text-technical-label text-primary">VOLVER</span>
+</div>
+<div class="font-headline-md text-headline-md text-primary tracking-tighter">NT AUTOMOTIVE</div>
+<div class="w-[60px]"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center pt-24 pb-lg px-margin-mobile md:px-margin-desktop">
+<div class="w-full max-w-[600px] glass-panel rounded-xl p-lg md:p-xl flex flex-col gap-lg shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+<!-- Header Section -->
+<div class="flex flex-col gap-sm border-b border-outline-variant pb-md">
+<span class="font-technical-label text-technical-label text-primary uppercase">Paso 2 de 4</span>
+<h1 class="font-headline-md-mobile md:font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface">Elegí una fecha para tu visita</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Seleccioná un día disponible en el calendario para continuar con la programación de tu servicio.</p>
+</div>
+<!-- Calendar Module -->
+<div class="flex flex-col gap-md">
+<!-- Month/Year Navigation -->
+<div class="flex justify-between items-center bg-surface-container rounded-lg p-sm border border-outline-variant">
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary rounded">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<span class="font-technical-label text-technical-label text-on-surface tracking-widest uppercase">Octubre 2023</span>
+<button class="p-xs text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary rounded">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<!-- Calendar Grid -->
+<div class="grid grid-cols-7 gap-xs text-center">
+<!-- Days of week header -->
+<div class="font-technical-label text-technical-label text-on-surface-variant py-xs">DOM</div>
+<div class="font-technical-label text-technical-label text-on-surface-variant py-xs">LUN</div>
+<div class="font-technical-label text-technical-label text-on-surface-variant py-xs">MAR</div>
+<div class="font-technical-label text-technical-label text-on-surface-variant py-xs">MIE</div>
+<div class="font-technical-label text-technical-label text-on-surface-variant py-xs">JUE</div>
+<div class="font-technical-label text-technical-label text-on-surface-variant py-xs">VIE</div>
+<div class="font-technical-label text-technical-label text-on-surface-variant py-xs">SAB</div>
+<!-- Empty slots for previous month -->
+<div class="py-sm"></div>
+<div class="py-sm"></div>
+<!-- Days -->
+<!-- Past days (disabled) -->
+<button class="font-technical-label text-technical-label text-outline-variant py-sm rounded bg-transparent cursor-not-allowed" disabled="">1</button>
+<button class="font-technical-label text-technical-label text-outline-variant py-sm rounded bg-transparent cursor-not-allowed" disabled="">2</button>
+<button class="font-technical-label text-technical-label text-outline-variant py-sm rounded bg-transparent cursor-not-allowed" disabled="">3</button>
+<!-- Today / Active / Available -->
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none relative">
+                        4
+                        <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-secondary-fixed"></div>
+</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">5</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">6</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">7</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">8</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">9</button>
+<!-- Selected Date -->
+<button class="font-technical-label text-technical-label text-on-primary py-sm rounded bg-primary border border-primary shadow-[0_0_10px_rgba(242,202,80,0.3)] focus:outline-none transition-all">10</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">11</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">12</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">13</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">14</button>
+<!-- Unavailable -->
+<button class="font-technical-label text-technical-label text-outline-variant py-sm rounded bg-surface-container-lowest border border-outline-variant border-dashed cursor-not-allowed flex items-center justify-center relative overflow-hidden group" disabled="">
+<span class="z-10">15</span>
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSJ0cmFuc3BhcmVudCI+PC9yZWN0Pgo8bGluZSB4MT0iMCIgeTE9IjQiIHgyPSI0IiB5Mj0iMCIgc3Ryb2tlPSIjM2YzZjNmIiBzdHJva2Utd2lkdGg9IjEiPjwvbGluZT4KPC9zdmc+')] opacity-30"></div>
+</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">16</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">17</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">18</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">19</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">20</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">21</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">22</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">23</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">24</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">25</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">26</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">27</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">28</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">29</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">30</button>
+<button class="font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none">31</button>
+</div>
+</div>
+<!-- Contextual Data Strip (Selected Date Summary) -->
+<div class="bg-surface-container-high rounded-lg p-md border border-outline-variant flex justify-between items-center mt-sm">
+<div class="flex flex-col">
+<span class="font-technical-label text-technical-label text-on-surface-variant">FECHA SELECCIONADA</span>
+<span class="font-body-lg text-body-lg text-primary mt-xs">Martes 10, Octubre 2023</span>
+</div>
+<span class="material-symbols-outlined text-secondary-fixed text-[32px]" style="font-variation-settings: 'FILL' 0;">event_available</span>
+</div>
+<!-- Action Buttons -->
+<div class="flex gap-md mt-sm pt-md border-t border-outline-variant">
+<button class="flex-1 py-md px-lg font-technical-label text-technical-label uppercase border border-primary text-primary rounded bg-transparent hover:bg-surface-container transition-colors focus:outline-none">
+                    CANCELAR
+                </button>
+<button class="flex-1 py-md px-lg font-technical-label text-technical-label uppercase bg-primary text-on-primary rounded hover:bg-primary-fixed-dim transition-colors focus:outline-none shadow-[0_0_15px_rgba(242,202,80,0.2)]">
+                    CONTINUAR
+                </button>
+</div>
+<!-- AI processing visualizer (inactive state for this screen) -->
+<div class="h-[1px] w-full bg-outline-variant mt-sm relative overflow-hidden hidden">
+<div class="absolute inset-y-0 left-0 w-1/3 bg-secondary-fixed opacity-50 blur-sm transform -translate-x-full animate-[slideRight_2s_ease-in-out_infinite]"></div>
+</div>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for date selection demonstration
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateButtons = document.querySelectorAll('.grid-cols-7 button:not([disabled])');
+            
+            dateButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove selected state from all
+                    dateButtons.forEach(btn => {
+                        btn.className = "font-technical-label text-technical-label text-on-surface py-sm rounded bg-surface-container hover:border-primary hover:text-primary border border-transparent transition-all focus:outline-none";
+                    });
+                    
+                    // Add selected state to clicked
+                    this.className = "font-technical-label text-technical-label text-on-primary py-sm rounded bg-primary border border-primary shadow-[0_0_10px_rgba(242,202,80,0.3)] focus:outline-none transition-all";
+                    
+                    // Update the summary strip (simulated)
+                    const day = this.textContent.trim();
+                    const summaryText = document.querySelector('.bg-surface-container-high .font-body-lg');
+                    if(summaryText) {
+                        summaryText.innerHTML = `Octubre ${day}, 2023`;
+                        // Brief flash effect on text update
+                        summaryText.style.opacity = '0.5';
+                        setTimeout(() => summaryText.style.opacity = '1', 150);
+                    }
+                });
+            });
+        });
+    </script>
+</body></html>

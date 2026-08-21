@@ -1,0 +1,247 @@
+<!DOCTYPE html><html class="dark" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NT AUTOMOTIVE - Descubrimiento</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#93000a",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed": "#241a00",
+                      "on-tertiary": "#082b72",
+                      "on-tertiary-fixed-variant": "#27438a",
+                      "surface-container-highest": "#353534",
+                      "secondary-fixed": "#5af8fb",
+                      "inverse-surface": "#e5e2e1",
+                      "secondary-container": "#00cdd0",
+                      "primary": "#f2ca50",
+                      "on-primary-container": "#554300",
+                      "on-tertiary-fixed": "#00174b",
+                      "tertiary-fixed": "#dbe1ff",
+                      "surface-container": "#201f1f",
+                      "surface-container-high": "#2a2a2a",
+                      "primary-fixed-dim": "#e9c349",
+                      "inverse-primary": "#735c00",
+                      "surface": "#131313",
+                      "primary-container": "#d4af37",
+                      "surface-container-low": "#1c1b1b",
+                      "surface-variant": "#353534",
+                      "on-surface": "#e5e2e1",
+                      "on-primary": "#3c2f00",
+                      "error": "#ffb4ab",
+                      "on-error": "#690005",
+                      "on-surface-variant": "#d0c5af",
+                      "surface-bright": "#393939",
+                      "background": "#131313",
+                      "secondary-fixed-dim": "#2ddbde",
+                      "tertiary": "#bfcdff",
+                      "primary-fixed": "#ffe088",
+                      "on-secondary": "#003738",
+                      "tertiary-fixed-dim": "#b4c5ff",
+                      "surface-tint": "#e9c349",
+                      "tertiary-container": "#97b0ff",
+                      "on-secondary-fixed-variant": "#004f51",
+                      "on-secondary-fixed": "#002020",
+                      "outline": "#99907c",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-secondary-container": "#005253",
+                      "outline-variant": "#4d4635",
+                      "on-background": "#e5e2e1",
+                      "on-primary-fixed-variant": "#574500",
+                      "inverse-on-surface": "#313030",
+                      "surface-dim": "#131313",
+                      "secondary": "#46eaed",
+                      "on-tertiary-container": "#254188"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "margin-desktop": "32px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "xl": "40px",
+                      "unit": "4px",
+                      "margin-mobile": "16px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "headline-sm": ["Inter"],
+                      "headline-md-mobile": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "technical-label": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "technical-label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .ai-pulse {
+            animation: pulse-line 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-line {
+            0%, 100% { opacity: 0.3; transform: scaleX(0.95); }
+            50% { opacity: 1; transform: scaleX(1); }
+        }
+        
+        /* Webkit specific slider styling for dark mode / technical look */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #f2ca50;
+            cursor: pointer;
+            margin-top: -6px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+            box-shadow: 0 0 0 4px #131313;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #4d4635;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-lg">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface border-b border-outline-variant flat no shadows flex justify-between items-center px-margin-desktop h-16 w-full">
+<div class="font-headline-md text-headline-md text-primary tracking-tighter cursor-pointer active:opacity-80">
+            NT AUTOMOTIVE
+        </div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80" data-icon="account_circle">account_circle</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:opacity-80" data-icon="settings">settings</span>
+</div>
+</header>
+<div class="flex flex-1 pt-16 h-full">
+<!-- SideNavBar (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col py-lg space-y-md h-full w-64 fixed left-0 top-16 bg-surface-container dark:bg-surface-container border-r border-outline-variant flat no shadows z-40">
+<div class="px-md mb-lg">
+<div class="font-headline-sm text-headline-sm text-primary mb-xs">DEALER PREMIER</div>
+<div class="font-technical-label text-technical-label text-on-surface-variant">Authorized Agent</div>
+</div>
+<div class="flex flex-col space-y-unit">
+<a class="flex items-center gap-md px-md py-sm text-primary border-l-2 border-primary bg-surface-container-high hover:bg-surface-container-highest transition-all duration-200 ease-in-out cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-technical-label text-technical-label">Assistant</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="font-technical-label text-technical-label">Inventory</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+<span class="font-technical-label text-technical-label">Service</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-technical-label text-technical-label">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop flex flex-col md:flex-row gap-lg max-w-[1200px] mx-auto w-full">
+<!-- Contextual Data / Assistant Setup -->
+<div class="w-full md:w-5/12 flex flex-col gap-md">
+<div class="bg-surface-container-high border border-outline-variant p-lg rounded-DEFAULT">
+<div class="font-technical-label text-technical-label text-primary mb-sm uppercase tracking-wider">Session Active</div>
+<h1 class="font-headline-md-mobile md:font-headline-md text-on-surface mb-xs">Vehicle Discovery</h1>
+<p class="font-body-sm text-on-surface-variant">Configuring parameters for personalized vehicle matching algorithm.</p>
+</div>
+<!-- Placeholder for some generic vehicle imagery to set the mood -->
+<div class="w-full h-48 bg-surface-container border border-outline-variant rounded-DEFAULT overflow-hidden relative">
+<img class="w-full h-full object-cover opacity-60" data-alt="A sleek, modern high-performance sports car shown from a low angle in a dimly lit studio environment. Soft, dramatic rim lighting highlights the curves of the dark grey metallic paint, emphasizing luxury and precision engineering. The background is pure black with subtle geometric lines, fitting a high-end minimalist SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBE1V8d5oqSDo7T3PeGy7YGjmGaRE2Y-tGupPC_8ncuRSwuQdPsnBcLSqn5dpl0CX5IgiHUwVUMjOQBq4tLokgBEL32hDPGX7edaGSqsVP3tC059NM0buNIx8_nHyl2Puefg0znM-E_piRjASDO0hsVVkdEw5gE1ztbQnpVzAVYhFniL7poD0Z4whci3b9LDRCNOlQ_2OEoYnH7FWYL0t-7SDg2sMj4FeUZEsjYjaXzDhQRwzrH6fTEg">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent"></div>
+<div class="absolute bottom-md left-md">
+<div class="font-technical-label text-technical-label text-on-surface-variant">Telemetric Sync: Ready</div>
+</div>
+</div>
+</div>
+<!-- Conversational Interface Panel -->
+<div class="w-full md:w-7/12 flex flex-col h-[60vh] md:h-auto bg-surface-container border border-outline-variant rounded-DEFAULT relative overflow-hidden">
+<!-- Chat Area -->
+<div class="flex-1 p-lg overflow-y-auto flex flex-col gap-lg pb-xl">
+<!-- System/Agent Message -->
+<div class="flex border-l-2 border-secondary pl-md">
+<div class="bg-surface-container-high border border-outline-variant rounded-DEFAULT p-md w-full">
+<div class="font-technical-label text-technical-label text-secondary mb-xs">NT AI ASSISTANT</div>
+<p class="font-body-lg text-on-surface">Para poder recomendarte la mejor opción de nuestro catálogo premier, necesito conocer algunos detalles sobre el uso que le darás al vehículo.</p>
+<p class="font-headline-sm text-on-surface mt-md">¿Para qué lo vas a usar principalmente?</p>
+</div>
+</div>
+<!-- User Interactive Options -->
+<div class="flex border-l-2 border-primary pl-md mt-md">
+<div class="w-full flex flex-wrap gap-sm">
+<!-- Chips -->
+<button class="bg-[#0A0A0A] border border-outline-variant hover:border-primary px-lg py-sm rounded-DEFAULT font-technical-label text-technical-label text-on-surface transition-colors cursor-pointer active:bg-primary-container active:text-on-primary-container">Familiar</button>
+<button class="bg-[#0A0A0A] border border-outline-variant hover:border-primary px-lg py-sm rounded-DEFAULT font-technical-label text-technical-label text-on-surface transition-colors cursor-pointer active:bg-primary-container active:text-on-primary-container">Trabajo</button>
+<button class="bg-[#0A0A0A] border border-outline-variant hover:border-primary px-lg py-sm rounded-DEFAULT font-technical-label text-technical-label text-on-surface transition-colors cursor-pointer active:bg-primary-container active:text-on-primary-container">Ciudad</button>
+<button class="bg-[#0A0A0A] border border-outline-variant hover:border-primary px-lg py-sm rounded-DEFAULT font-technical-label text-technical-label text-on-surface transition-colors cursor-pointer active:bg-primary-container active:text-on-primary-container">Viajes</button>
+<button class="bg-primary border border-primary px-lg py-sm rounded-DEFAULT font-technical-label text-technical-label text-[#000000] transition-colors cursor-pointer">Uso mixto</button>
+</div>
+</div>
+<!-- System/Agent Message 2 -->
+<div class="flex border-l-2 border-secondary pl-md mt-lg">
+<div class="bg-surface-container-high border border-outline-variant rounded-DEFAULT p-md w-full">
+<div class="font-technical-label text-technical-label text-secondary mb-xs">NT AI ASSISTANT</div>
+<p class="font-headline-sm text-on-surface">¿Cuál es el rango de presupuesto estimado?</p>
+<!-- Budget Slider Control -->
+<div class="mt-lg mb-sm">
+<div class="flex justify-between font-technical-label text-technical-label text-on-surface-variant mb-sm">
+<span>$30k</span>
+<span class="text-primary">$85k</span>
+<span>$250k+</span>
+</div>
+<input class="w-full appearance-none bg-transparent" max="250" min="30" type="range" value="85">
+</div>
+</div>
+</div>
+</div>
+<!-- Input / AI State Area Footer -->
+<div class="absolute bottom-0 w-full bg-surface-container border-t border-outline-variant p-md">
+<div class="flex items-center gap-md">
+<input class="flex-1 bg-[#0A0A0A] border border-outline-variant focus:border-secondary focus:ring-0 rounded-DEFAULT font-body-sm text-on-surface px-md py-sm outline-none placeholder:text-on-surface-variant" placeholder="Type specific requirements..." type="text">
+<button class="bg-primary text-[#000000] px-lg py-sm rounded-DEFAULT font-technical-label text-technical-label uppercase hover:bg-primary-container transition-colors">
+                            Send
+                        </button>
+</div>
+<!-- AI State Visualizer -->
+<div class="mt-sm flex items-center justify-center gap-sm">
+<div class="w-16 h-[2px] bg-secondary ai-pulse rounded-full"></div>
+<span class="font-technical-label text-technical-label text-secondary text-[10px] tracking-widest uppercase">Processing</span>
+<div class="w-16 h-[2px] bg-secondary ai-pulse rounded-full" style="animation-delay: 0.5s;"></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

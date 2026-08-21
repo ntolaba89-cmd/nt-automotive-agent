@@ -1,0 +1,265 @@
+<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Test Drive Discovery - NT AUTOMOTIVE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed": "#241a00",
+                        "on-tertiary": "#082b72",
+                        "on-tertiary-fixed-variant": "#27438a",
+                        "surface-container-highest": "#353534",
+                        "secondary-fixed": "#5af8fb",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-container": "#00cdd0",
+                        "primary": "#f2ca50",
+                        "on-primary-container": "#554300",
+                        "on-tertiary-fixed": "#00174b",
+                        "tertiary-fixed": "#dbe1ff",
+                        "surface-container": "#201f1f",
+                        "surface-container-high": "#2a2a2a",
+                        "primary-fixed-dim": "#e9c349",
+                        "inverse-primary": "#735c00",
+                        "surface": "#131313",
+                        "primary-container": "#d4af37",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-variant": "#353534",
+                        "on-surface": "#e5e2e1",
+                        "on-primary": "#3c2f00",
+                        "error": "#ffb4ab",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-bright": "#393939",
+                        "background": "#131313",
+                        "secondary-fixed-dim": "#2ddbde",
+                        "tertiary": "#bfcdff",
+                        "primary-fixed": "#ffe088",
+                        "on-secondary": "#003738",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "surface-tint": "#e9c349",
+                        "tertiary-container": "#97b0ff",
+                        "on-secondary-fixed-variant": "#004f51",
+                        "on-secondary-fixed": "#002020",
+                        "outline": "#99907c",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-container": "#005253",
+                        "outline-variant": "#4d4635",
+                        "on-background": "#e5e2e1",
+                        "on-primary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#313030",
+                        "surface-dim": "#131313",
+                        "secondary": "#46eaed",
+                        "on-tertiary-container": "#254188"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "margin-desktop": "32px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "headline-md-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "technical-label": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "technical-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #121212; color: #e5e2e1; }
+        .glass-panel {
+            background-color: #1E1E1E;
+            border: 1px solid #2A2A2A;
+        }
+        .data-strip {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            position: relative;
+        }
+        .data-strip::after {
+            content: "";
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            border-bottom: 1px dotted #4d4635;
+            z-index: 0;
+        }
+        .data-strip > span {
+            background-color: #1E1E1E;
+            z-index: 1;
+            padding: 0 4px;
+        }
+    </style>
+</head>
+<body class="font-body-lg text-body-lg min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface fixed top-0 w-full flex justify-between items-center px-margin-desktop h-16 w-full z-50 border-b border-outline-variant flat no shadows">
+<div class="font-headline-md text-headline-md text-primary tracking-tighter">NT AUTOMOTIVE</div>
+<div class="flex items-center space-x-md">
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 hover:text-primary transition-colors">account_circle</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer active:opacity-80 hover:text-primary transition-colors">settings</span>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex bg-surface-container dark:bg-surface-container h-full w-64 fixed left-0 top-16 border-r border-outline-variant flat no shadows flex-col py-lg space-y-md z-40">
+<div class="px-md mb-lg">
+<div class="font-headline-sm text-headline-sm text-primary">DEALER PREMIER</div>
+<div class="font-technical-label text-technical-label text-on-surface-variant mt-xs">Authorized Agent</div>
+</div>
+<a class="flex items-center px-md py-sm font-technical-label text-technical-label text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-sm text-on-surface-variant group-hover:text-primary transition-colors">smart_toy</span>
+                Assistant
+            </a>
+<a class="flex items-center px-md py-sm font-technical-label text-technical-label text-primary border-l-2 border-primary bg-surface-container-high hover:bg-surface-container-highest transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-sm text-primary">directions_car</span>
+                Inventory
+            </a>
+<a class="flex items-center px-md py-sm font-technical-label text-technical-label text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-sm text-on-surface-variant group-hover:text-primary transition-colors">build</span>
+                Service
+            </a>
+<a class="flex items-center px-md py-sm font-technical-label text-technical-label text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined mr-sm text-on-surface-variant group-hover:text-primary transition-colors">person</span>
+                Profile
+            </a>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop flex flex-col items-center">
+<div class="w-full max-w-[1200px] mb-lg text-center">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-sm">SELECT VEHICLE</h1>
+<p class="font-technical-label text-technical-label text-on-surface-variant">INITIATE TEST DRIVE PROTOCOL</p>
+</div>
+<!-- Vehicle Selector Grid -->
+<div class="w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Vehicle Card 1 -->
+<article class="glass-panel rounded-DEFAULT overflow-hidden flex flex-col hover:border-primary transition-colors duration-300">
+<div class="h-48 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A sleek, high-performance grand tourer sports car in a dark, moody studio environment. The vehicle is painted in a deep, glossy midnight blue, reflecting subtle low-key studio lighting that highlights its aerodynamic curves and sharp technical lines. The aesthetic is modern minimalist luxury, heavily stylized with sharp contrasts and high-end automotive photography techniques, conveying power and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwnHYXxF1wrySG5T6khe2bfZ_k5yplhb8fSxgk5dwUOM-TzPXETAOju40BV1QS_M4dKT0XXmKEzd80Z9CbjtttonHqu-ywBicirX_oswjUUA2NmbVsOqQaaJkITdy5CbJ2NrXncfYgEuQ1vaOHtDdNpL0keciyq1zh_jXq7IDjEnUt_PZ4TXWFdJz7YoR3r-zK5yde_7wEAc_AsyU0HSfMfi_QjaQzljA_D3qQhpuc1WXxNMPwAs41uw">
+<div class="absolute top-sm right-sm bg-surface-container-high px-2 py-1 rounded-DEFAULT border border-outline-variant font-technical-label text-technical-label text-primary">
+                            AVAILABLE
+                        </div>
+</div>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">NT-GT Series 8</h2>
+<p class="font-technical-label text-technical-label text-on-surface-variant mb-md">Grand Tourer</p>
+<div class="space-y-sm mb-lg">
+<div class="data-strip">
+<span class="font-technical-label text-technical-label text-on-surface-variant">Power</span>
+<span class="font-technical-label text-technical-label text-primary">620 HP</span>
+</div>
+<div class="data-strip">
+<span class="font-technical-label text-technical-label text-on-surface-variant">0-100 km/h</span>
+<span class="font-technical-label text-technical-label text-primary">3.2s</span>
+</div>
+<div class="data-strip">
+<span class="font-technical-label text-technical-label text-on-surface-variant">Range</span>
+<span class="font-technical-label text-technical-label text-primary">480 km</span>
+</div>
+</div>
+</div>
+<button class="w-full py-sm bg-primary text-on-primary font-technical-label text-technical-label hover:bg-primary-fixed-dim transition-colors rounded-DEFAULT">
+                            AGENDAR TEST DRIVE
+                        </button>
+</div>
+</article>
+<!-- Vehicle Card 2 -->
+<article class="glass-panel rounded-DEFAULT overflow-hidden flex flex-col hover:border-primary transition-colors duration-300">
+<div class="h-48 w-full relative">
+<img class="w-full h-full object-cover" data-alt="An aggressive, angular high-performance electric SUV parked in a minimalist concrete architectural space. The vehicle features a matte graphite finish with subtle glowing electric blue accents around the aerodynamic vents. The lighting is harsh and directional, emphasizing the vehicle's futuristic and imposing silhouette against the raw concrete textures. The mood is authoritative and advanced, fitting a premium digital dealership interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA59v1IaBFCXKpyFlQ8_aTb7cBayMrLpL9kbmf0kUccUXoDmRQeQpw392h-V2gbI6E816MkmM0dZj06acPdJQna_JGKR-G-K7VXEkLvx9X6JFgJrdw8pQLoj4R-Vd8c8TpqBOU1TXghHLXhyWBl_dr-mq9Pt7XZM10iHlySXM6WG2L9OzgVYWIllISqfUEOfxPxYwULM6gJU0dMC_esT4QP6KsYScXUAoblOrrqZuAq-SEIy8HkOgQ-3g">
+</div>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">NT-X Performance</h2>
+<p class="font-technical-label text-technical-label text-on-surface-variant mb-md">Electric SUV</p>
+<div class="space-y-sm mb-lg">
+<div class="data-strip">
+<span class="font-technical-label text-technical-label text-on-surface-variant">Power</span>
+<span class="font-technical-label text-technical-label text-primary">750 HP</span>
+</div>
+<div class="data-strip">
+<span class="font-technical-label text-technical-label text-on-surface-variant">0-100 km/h</span>
+<span class="font-technical-label text-technical-label text-primary">2.9s</span>
+</div>
+<div class="data-strip">
+<span class="font-technical-label text-technical-label text-on-surface-variant">Range</span>
+<span class="font-technical-label text-technical-label text-primary">520 km</span>
+</div>
+</div>
+</div>
+<button class="w-full py-sm bg-primary text-on-primary font-technical-label text-technical-label hover:bg-primary-fixed-dim transition-colors rounded-DEFAULT">
+                            AGENDAR TEST DRIVE
+                        </button>
+</div>
+</article>
+<!-- Vehicle Card 3 -->
+<article class="glass-panel rounded-DEFAULT overflow-hidden flex flex-col hover:border-primary transition-colors duration-300">
+<div class="h-48 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A luxurious flagship electric sedan in a highly polished, dark metallic silver finish. The car is positioned in an abstract, dimly lit tunnel with sleek, linear light fixtures reflecting off its flawless surface. The aesthetic conveys executive presence, sophisticated engineering, and silent power. The composition focuses on the aerodynamic profile and intricate wheel design, perfectly suited for a high-end automotive SaaS environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDviofrFybZWk5cbU5NRxeKnrlZbGKSMGpUCNeWmlFwnUoscbtnsLT3BtOKbdHMm7dVWvHGAHp10tsw3sC6zGknmgwu07TUG2Fgdc9hTJxOMThHuK2UnGf-Gqf91lzXMOjC7VHz4TWOboZkI2VA6j4MbItsa8VHyFdG0zwJ1jQMWMKvOnhFiBimoSQt6JIJcjkHj_Xu9F0MUFc2MlIWcAS_-6O9EZsydU6Pio2eIAWAKFl-zsDgcDGB-w">
+</div>
+<div class="p-md flex-1 flex flex-col justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">NT-E Executive</h2>
+<p class="font-technical-label text-technical-label text-on-surface-variant mb-md">Luxury Sedan</p>
+<div class="space-y-sm mb-lg">
+<div class="data-strip">
+<span class="font-technical-label text-technical-label text-on-surface-variant">Power</span>
+<span class="font-technical-label text-technical-label text-primary">580 HP</span>
+</div>
+<div class="data-strip">
+<span class="font-technical-label text-technical-label text-on-surface-variant">0-100 km/h</span>
+<span class="font-technical-label text-technical-label text-primary">3.8s</span>
+</div>
+<div class="data-strip">
+<span class="font-technical-label text-technical-label text-on-surface-variant">Range</span>
+<span class="font-technical-label text-technical-label text-primary">610 km</span>
+</div>
+</div>
+</div>
+<button class="w-full py-sm bg-primary text-on-primary font-technical-label text-technical-label hover:bg-primary-fixed-dim transition-colors rounded-DEFAULT">
+                            AGENDAR TEST DRIVE
+                        </button>
+</div>
+</article>
+</div>
+</main>
+</div>
+</body></html>
