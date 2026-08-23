@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Users, Calendar, TrendingUp, Car } from 'lucide-react'
 import { mockLeads } from './mocks/leads'
 import { mockAppointments } from './mocks/appointments'
@@ -6,8 +7,26 @@ import { mockBranches } from './mocks/branches'
 import { calculateDashboardMetrics } from './core/logic'
 import { KpiCard } from './core/components/KpiCard'
 import { LeadRow } from './core/components/LeadRow'
+import { LeadDetail } from './core/components/LeadDetail'
 
 function App() {
+  const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null)
+
+  const selectedLead = mockLeads.find((lead) => lead.id === selectedLeadId)
+
+  if (selectedLead) {
+    const vehicle = mockVehicles.find((v) => v.id === selectedLead.interestVehicleId)
+    const branch = mockBranches.find((b) => b.id === selectedLead.branchId)
+    return (
+      <LeadDetail
+        lead={selectedLead}
+        vehicle={vehicle}
+        branch={branch}
+        onBack={() => setSelectedLeadId(null)}
+      />
+    )
+  }
+
   const metrics = calculateDashboardMetrics(mockLeads, mockAppointments)
 
   return (
@@ -42,7 +61,13 @@ function App() {
           const vehicle = mockVehicles.find((v) => v.id === lead.interestVehicleId)
           const branch = mockBranches.find((b) => b.id === lead.branchId)
           return (
-            <LeadRow key={lead.id} lead={lead} vehicle={vehicle} branch={branch} />
+            <LeadRow
+              key={lead.id}
+              lead={lead}
+              vehicle={vehicle}
+              branch={branch}
+              onClick={() => setSelectedLeadId(lead.id)}
+            />
           )
         })}
       </div>
