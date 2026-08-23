@@ -3,6 +3,8 @@ export type VehicleCategory =
   | 'sedan'
   | 'grand_tourer'
   | 'city_car'
+  | 'pickup'
+  | 'moto'
   | 'otro'
 
 export interface Vehicle {
