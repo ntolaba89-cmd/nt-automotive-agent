@@ -11,3 +11,9 @@ export {
   isTimeSlotAvailable,
 } from './agenda'
 export type { TimeSlotAvailability } from './agenda'
+
+export {
+  buildOpportunitySummary,
+  buildConversationOpener,
+  NO_AUTO_SEND_DISCLAIMER,
+} from './ai-assist'
