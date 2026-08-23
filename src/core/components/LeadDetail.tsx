@@ -25,6 +25,13 @@ const MODALITY_LABELS: Record<string, string> = {
   sin_definir: 'Sin definir',
 }
 
+const TEST_DRIVE_LABELS: Record<string, string> = {
+    no_solicitado: 'No solicitado',
+    solicitado: 'Solicitado',
+    agendado: 'Agendado',
+    realizado: 'Realizado',
+}
+
 const USE_LABELS: Record<string, string> = {
   familiar: 'Familiar',
   trabajo: 'Trabajo',
@@ -117,7 +124,11 @@ export function LeadDetail({ lead, vehicle, branch, onBack }: LeadDetailProps) {
           />
           <DataRow
             label="Test Drive"
-            value={lead.testDrive?.status ?? 'No solicitado'}
+            value={
+                lead.testDrive?.status
+                  ? TEST_DRIVE_LABELS[lead.testDrive.status]
+                  : 'No solicitado'
+              }
           />
           <DataRow label="Sucursal asignada" value={branch ? branch.name : 'Sin definir'} />
           <DataRow
