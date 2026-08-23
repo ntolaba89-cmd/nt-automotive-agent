@@ -17,3 +17,6 @@ export {
   buildConversationOpener,
   NO_AUTO_SEND_DISCLAIMER,
 } from './ai-assist'
+
+export { calculateDashboardMetrics } from './dashboard-metrics'
+export type { DashboardMetrics } from './dashboard-metrics'
