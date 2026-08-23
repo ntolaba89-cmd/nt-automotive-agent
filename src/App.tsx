@@ -1,31 +1,48 @@
+import { Users, Calendar, TrendingUp, Car } from 'lucide-react'
 import { mockLeads } from './mocks/leads'
-import { scoreLead } from './core/logic'
-import { LeadScoreBadge } from './core/components/LeadScoreBadge'
+import { mockAppointments } from './mocks/appointments'
+import { mockVehicles } from './mocks/vehicles'
+import { mockBranches } from './mocks/branches'
+import { calculateDashboardMetrics } from './core/logic'
+import { KpiCard } from './core/components/KpiCard'
+import { LeadRow } from './core/components/LeadRow'
 
 function App() {
+  const metrics = calculateDashboardMetrics(mockLeads, mockAppointments)
+
   return (
     <div className="min-h-screen bg-neutral-950 p-8">
-      <h1 className="mb-6 text-xl font-semibold text-neutral-100">
-        Verificacion visual: LeadScoreBadge
-      </h1>
+      <header className="mb-8">
+        <h1 className="text-lg font-semibold text-amber-500">
+          NT Automotive Agent
+        </h1>
+        <p className="text-sm text-neutral-500">Dealer Premier</p>
+      </header>
+
+      <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+        <KpiCard label="Nuevos Leads" value={metrics.newLeads} Icon={Users} />
+        <KpiCard
+          label="Citas Activas"
+          value={metrics.appointmentsActive}
+          Icon={Calendar}
+        />
+        <KpiCard
+          label="Alta Intencion"
+          value={metrics.highIntentLeads}
+          Icon={TrendingUp}
+        />
+        <KpiCard label="Test Drives" value={metrics.testDrives} Icon={Car} />
+      </div>
+
+      <h2 className="mb-4 text-sm font-medium uppercase tracking-wide text-neutral-400">
+        Leads Activos
+      </h2>
       <div className="flex flex-col gap-3">
         {mockLeads.map((lead) => {
-          const result = scoreLead(lead)
+          const vehicle = mockVehicles.find((v) => v.id === lead.interestVehicleId)
+          const branch = mockBranches.find((b) => b.id === lead.branchId)
           return (
-            <div
-              key={lead.id}
-              className="flex items-center justify-between rounded-lg border border-neutral-800 bg-neutral-900 p-4"
-            >
-              <span className="text-neutral-200">
-                {lead.firstName} {lead.lastName}
-              </span>
-              <div className="flex items-center gap-3">
-                <span className="text-sm text-neutral-500">
-                  {result.score}/100
-                </span>
-                <LeadScoreBadge classification={result.classification} />
-              </div>
-            </div>
+            <LeadRow key={lead.id} lead={lead} vehicle={vehicle} branch={branch} />
           )
         })}
       </div>
