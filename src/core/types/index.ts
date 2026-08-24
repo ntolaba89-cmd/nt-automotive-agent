@@ -24,3 +24,10 @@ export {
   LEAD_SCORE_CAP,
   LEAD_SCORE_BANDS,
 } from './lead-score'
+export type {
+  ConversationEntryPoint,
+  ConversationStep,
+  AgendaSelection,
+  ConversationState,
+} from './conversation'
+export { INITIAL_CONVERSATION_STATE } from './conversation'
