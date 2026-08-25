@@ -24,3 +24,6 @@ export type { DashboardMetrics } from './dashboard-metrics'
 export { getNextStepAfterEntry } from './conversation'
 
 export { recommendVehicles } from './recommendation'
+
+export { getUpcomingBusinessDays } from './agenda-dates'
+export type { DateOption } from './agenda-dates'
