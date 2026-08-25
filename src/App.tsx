@@ -11,6 +11,9 @@ import { LeadDetail } from './core/components/LeadDetail'
 import { WelcomeScreen } from './core/components/WelcomeScreen'
 import { DiscoveryUseScreen } from './core/components/DiscoveryUseScreen'
 import { RecommendationScreen } from './core/components/RecommendationScreen'
+import { DecisionScreen } from './core/components/DecisionScreen'
+import type { DecisionChoice } from './core/components/DecisionScreen'
+import { AdvisorRequestedScreen } from './core/components/AdvisorRequestedScreen'
 import type { ConversationEntryPoint, ConversationState } from './core/types/conversation'
 import { INITIAL_CONVERSATION_STATE } from './core/types/conversation'
 import type { VehicleUse } from './core/types/lead'
@@ -89,6 +92,7 @@ function App() {
   const [conversation, setConversation] = useState<ConversationState>(
     INITIAL_CONVERSATION_STATE,
   )
+  const [advisorRequested, setAdvisorRequested] = useState(false)
 
   const handleSelectEntryPoint = (entryPoint: ConversationEntryPoint) => {
     setConversation((prev) => ({
@@ -125,6 +129,25 @@ function App() {
     }))
   }
 
+  const handleRestart = () => {
+    setConversation(INITIAL_CONVERSATION_STATE)
+    setAdvisorRequested(false)
+  }
+
+  const handleDecision = (choice: DecisionChoice) => {
+    if (choice === 'reservar_cita') {
+      setConversation((prev) => ({ ...prev, step: 'agenda_sucursal' }))
+    } else if (choice === 'hablar_asesor') {
+      setAdvisorRequested(true)
+    } else {
+      handleRestart()
+    }
+  }
+
+  if (advisorRequested) {
+    return <AdvisorRequestedScreen onRestart={handleRestart} />
+  }
+
   return (
     <div className="relative">
       <button
@@ -150,6 +173,8 @@ function App() {
             )}
             onContinue={handleContinueFromRecommendation}
           />
+        ) : conversation.step === 'decision' ? (
+          <DecisionScreen onSelect={handleDecision} />
         ) : (
           <div className="flex min-h-screen items-center justify-center bg-neutral-950 p-8 text-center text-neutral-300">
             <div>
@@ -167,7 +192,7 @@ function App() {
               </p>
               <button
                 type="button"
-                onClick={() => setConversation(INITIAL_CONVERSATION_STATE)}
+                onClick={handleRestart}
                 className="mt-4 rounded-md border border-neutral-700 px-3 py-1.5 text-sm hover:bg-neutral-800"
               >
                 Volver a Bienvenida
