@@ -9,8 +9,10 @@ import { KpiCard } from './core/components/KpiCard'
 import { LeadRow } from './core/components/LeadRow'
 import { LeadDetail } from './core/components/LeadDetail'
 import { WelcomeScreen } from './core/components/WelcomeScreen'
+import { DiscoveryUseScreen } from './core/components/DiscoveryUseScreen'
 import type { ConversationEntryPoint, ConversationState } from './core/types/conversation'
 import { INITIAL_CONVERSATION_STATE } from './core/types/conversation'
+import type { VehicleUse } from './core/types/lead'
 import { getNextStepAfterEntry } from './core/logic'
 
 type ViewMode = 'cliente' | 'asesor'
@@ -104,6 +106,17 @@ function App() {
     }))
   }
 
+  const handleSelectUse = (use: VehicleUse) => {
+    setConversation((prev) => ({
+      ...prev,
+      step: 'recomendacion',
+      draftLead: {
+        ...prev.draftLead,
+        intendedUse: use,
+      },
+    }))
+  }
+
   return (
     <div className="relative">
       <button
@@ -117,6 +130,9 @@ function App() {
       {viewMode === 'cliente' ? (
         conversation.step === 'bienvenida' ? (
           <WelcomeScreen onSelectEntryPoint={handleSelectEntryPoint} />
+        ) : conversation.step === 'descubrimiento' &&
+          conversation.entryPoint === 'buscar_vehiculo' ? (
+          <DiscoveryUseScreen onSelectUse={handleSelectUse} />
         ) : (
           <div className="flex min-h-screen items-center justify-center bg-neutral-950 p-8 text-center text-neutral-300">
             <div>
@@ -128,6 +144,9 @@ function App() {
               </p>
               <p className="text-lg">
                 Step actual: <strong>{conversation.step}</strong>
+              </p>
+              <p className="text-lg">
+                Uso: <strong>{conversation.draftLead.intendedUse ?? '(sin definir)'}</strong>
               </p>
               <button
                 type="button"
