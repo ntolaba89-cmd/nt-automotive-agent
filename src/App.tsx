@@ -4,12 +4,13 @@ import { mockLeads } from './mocks/leads'
 import { mockAppointments } from './mocks/appointments'
 import { mockVehicles } from './mocks/vehicles'
 import { mockBranches } from './mocks/branches'
-import { calculateDashboardMetrics } from './core/logic'
+import { calculateDashboardMetrics, recommendVehicles } from './core/logic'
 import { KpiCard } from './core/components/KpiCard'
 import { LeadRow } from './core/components/LeadRow'
 import { LeadDetail } from './core/components/LeadDetail'
 import { WelcomeScreen } from './core/components/WelcomeScreen'
 import { DiscoveryUseScreen } from './core/components/DiscoveryUseScreen'
+import { RecommendationScreen } from './core/components/RecommendationScreen'
 import type { ConversationEntryPoint, ConversationState } from './core/types/conversation'
 import { INITIAL_CONVERSATION_STATE } from './core/types/conversation'
 import type { VehicleUse } from './core/types/lead'
@@ -117,6 +118,13 @@ function App() {
     }))
   }
 
+  const handleContinueFromRecommendation = () => {
+    setConversation((prev) => ({
+      ...prev,
+      step: 'decision',
+    }))
+  }
+
   return (
     <div className="relative">
       <button
@@ -133,6 +141,15 @@ function App() {
         ) : conversation.step === 'descubrimiento' &&
           conversation.entryPoint === 'buscar_vehiculo' ? (
           <DiscoveryUseScreen onSelectUse={handleSelectUse} />
+        ) : conversation.step === 'recomendacion' &&
+          conversation.draftLead.intendedUse ? (
+          <RecommendationScreen
+            vehicles={recommendVehicles(
+              conversation.draftLead.intendedUse,
+              mockVehicles,
+            )}
+            onContinue={handleContinueFromRecommendation}
+          />
         ) : (
           <div className="flex min-h-screen items-center justify-center bg-neutral-950 p-8 text-center text-neutral-300">
             <div>
