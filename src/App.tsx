@@ -4,7 +4,13 @@ import { mockLeads } from './mocks/leads'
 import { mockAppointments } from './mocks/appointments'
 import { mockVehicles } from './mocks/vehicles'
 import { mockBranches } from './mocks/branches'
-import { calculateDashboardMetrics, recommendVehicles } from './core/logic'
+import { defaultTimeSlots } from './config/tenants/dealer-premier/schedule'
+import {
+  calculateDashboardMetrics,
+  recommendVehicles,
+  getUpcomingBusinessDays,
+  getAvailability,
+} from './core/logic'
 import { KpiCard } from './core/components/KpiCard'
 import { LeadRow } from './core/components/LeadRow'
 import { LeadDetail } from './core/components/LeadDetail'
@@ -14,6 +20,9 @@ import { RecommendationScreen } from './core/components/RecommendationScreen'
 import { DecisionScreen } from './core/components/DecisionScreen'
 import type { DecisionChoice } from './core/components/DecisionScreen'
 import { AdvisorRequestedScreen } from './core/components/AdvisorRequestedScreen'
+import { AgendaBranchScreen } from './core/components/AgendaBranchScreen'
+import { AgendaDateScreen } from './core/components/AgendaDateScreen'
+import { AgendaTimeScreen } from './core/components/AgendaTimeScreen'
 import type { ConversationEntryPoint, ConversationState } from './core/types/conversation'
 import { INITIAL_CONVERSATION_STATE } from './core/types/conversation'
 import type { VehicleUse } from './core/types/lead'
@@ -144,6 +153,30 @@ function App() {
     }
   }
 
+  const handleSelectBranch = (branchId: string) => {
+    setConversation((prev) => ({
+      ...prev,
+      step: 'agenda_fecha',
+      agendaSelection: { ...prev.agendaSelection, branchId },
+    }))
+  }
+
+  const handleSelectDate = (date: string) => {
+    setConversation((prev) => ({
+      ...prev,
+      step: 'agenda_horario',
+      agendaSelection: { ...prev.agendaSelection, date },
+    }))
+  }
+
+  const handleSelectTime = (time: string) => {
+    setConversation((prev) => ({
+      ...prev,
+      step: 'confirmacion',
+      agendaSelection: { ...prev.agendaSelection, time },
+    }))
+  }
+
   if (advisorRequested) {
     return <AdvisorRequestedScreen onRestart={handleRestart} />
   }
@@ -175,6 +208,28 @@ function App() {
           />
         ) : conversation.step === 'decision' ? (
           <DecisionScreen onSelect={handleDecision} />
+        ) : conversation.step === 'agenda_sucursal' ? (
+          <AgendaBranchScreen
+            branches={mockBranches}
+            onSelectBranch={handleSelectBranch}
+          />
+        ) : conversation.step === 'agenda_fecha' ? (
+          <AgendaDateScreen
+            dates={getUpcomingBusinessDays(7)}
+            onSelectDate={handleSelectDate}
+          />
+        ) : conversation.step === 'agenda_horario' &&
+          conversation.agendaSelection.branchId &&
+          conversation.agendaSelection.date ? (
+          <AgendaTimeScreen
+            slots={getAvailability(
+              defaultTimeSlots,
+              conversation.agendaSelection.branchId,
+              conversation.agendaSelection.date,
+              mockAppointments,
+            )}
+            onSelectTime={handleSelectTime}
+          />
         ) : (
           <div className="flex min-h-screen items-center justify-center bg-neutral-950 p-8 text-center text-neutral-300">
             <div>
@@ -182,13 +237,16 @@ function App() {
                 [Vista de depuracion temporal]
               </p>
               <p className="text-lg">
-                Entry point: <strong>{conversation.entryPoint}</strong>
-              </p>
-              <p className="text-lg">
                 Step actual: <strong>{conversation.step}</strong>
               </p>
               <p className="text-lg">
-                Uso: <strong>{conversation.draftLead.intendedUse ?? '(sin definir)'}</strong>
+                Sucursal: <strong>{conversation.agendaSelection.branchId ?? '(sin definir)'}</strong>
+              </p>
+              <p className="text-lg">
+                Fecha: <strong>{conversation.agendaSelection.date ?? '(sin definir)'}</strong>
+              </p>
+              <p className="text-lg">
+                Hora: <strong>{conversation.agendaSelection.time ?? '(sin definir)'}</strong>
               </p>
               <button
                 type="button"
