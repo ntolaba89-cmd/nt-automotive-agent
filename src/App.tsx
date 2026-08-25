@@ -9,7 +9,9 @@ import { KpiCard } from './core/components/KpiCard'
 import { LeadRow } from './core/components/LeadRow'
 import { LeadDetail } from './core/components/LeadDetail'
 import { WelcomeScreen } from './core/components/WelcomeScreen'
-import type { ConversationEntryPoint } from './core/types/conversation'
+import type { ConversationEntryPoint, ConversationState } from './core/types/conversation'
+import { INITIAL_CONVERSATION_STATE } from './core/types/conversation'
+import { getNextStepAfterEntry } from './core/logic'
 
 type ViewMode = 'cliente' | 'asesor'
 
@@ -81,10 +83,25 @@ function AdvisorDashboard() {
 
 function App() {
   const [viewMode, setViewMode] = useState<ViewMode>('cliente')
+  const [conversation, setConversation] = useState<ConversationState>(
+    INITIAL_CONVERSATION_STATE,
+  )
 
   const handleSelectEntryPoint = (entryPoint: ConversationEntryPoint) => {
-    console.log('Entry point seleccionado:', entryPoint)
-    // TODO: conectar con el estado de conversacion en el proximo paso
+    setConversation((prev) => ({
+      ...prev,
+      entryPoint,
+      step: getNextStepAfterEntry(entryPoint),
+      draftLead: {
+        ...prev.draftLead,
+        purchaseModality:
+          entryPoint === 'financiacion'
+            ? 'financiado'
+            : entryPoint === 'plan_ahorro'
+              ? 'plan_ahorro'
+              : prev.draftLead.purchaseModality,
+      },
+    }))
   }
 
   return (
@@ -98,7 +115,30 @@ function App() {
       </button>
 
       {viewMode === 'cliente' ? (
-        <WelcomeScreen onSelectEntryPoint={handleSelectEntryPoint} />
+        conversation.step === 'bienvenida' ? (
+          <WelcomeScreen onSelectEntryPoint={handleSelectEntryPoint} />
+        ) : (
+          <div className="flex min-h-screen items-center justify-center bg-neutral-950 p-8 text-center text-neutral-300">
+            <div>
+              <p className="mb-2 text-sm text-neutral-500">
+                [Vista de depuracion temporal]
+              </p>
+              <p className="text-lg">
+                Entry point: <strong>{conversation.entryPoint}</strong>
+              </p>
+              <p className="text-lg">
+                Step actual: <strong>{conversation.step}</strong>
+              </p>
+              <button
+                type="button"
+                onClick={() => setConversation(INITIAL_CONVERSATION_STATE)}
+                className="mt-4 rounded-md border border-neutral-700 px-3 py-1.5 text-sm hover:bg-neutral-800"
+              >
+                Volver a Bienvenida
+              </button>
+            </div>
+          </div>
+        )
       ) : (
         <AdvisorDashboard />
       )}
