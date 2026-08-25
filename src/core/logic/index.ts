@@ -22,3 +22,5 @@ export { calculateDashboardMetrics } from './dashboard-metrics'
 export type { DashboardMetrics } from './dashboard-metrics'
 
 export { getNextStepAfterEntry } from './conversation'
+
+export { recommendVehicles } from './recommendation'
