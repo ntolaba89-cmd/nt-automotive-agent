@@ -8,8 +8,12 @@ import { calculateDashboardMetrics } from './core/logic'
 import { KpiCard } from './core/components/KpiCard'
 import { LeadRow } from './core/components/LeadRow'
 import { LeadDetail } from './core/components/LeadDetail'
+import { WelcomeScreen } from './core/components/WelcomeScreen'
+import type { ConversationEntryPoint } from './core/types/conversation'
 
-function App() {
+type ViewMode = 'cliente' | 'asesor'
+
+function AdvisorDashboard() {
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null)
 
   const selectedLead = mockLeads.find((lead) => lead.id === selectedLeadId)
@@ -71,6 +75,33 @@ function App() {
           )
         })}
       </div>
+    </div>
+  )
+}
+
+function App() {
+  const [viewMode, setViewMode] = useState<ViewMode>('cliente')
+
+  const handleSelectEntryPoint = (entryPoint: ConversationEntryPoint) => {
+    console.log('Entry point seleccionado:', entryPoint)
+    // TODO: conectar con el estado de conversacion en el proximo paso
+  }
+
+  return (
+    <div className="relative">
+      <button
+        type="button"
+        onClick={() => setViewMode(viewMode === 'cliente' ? 'asesor' : 'cliente')}
+        className="fixed right-4 top-4 z-50 rounded-md border border-neutral-700 bg-neutral-900 px-3 py-1.5 text-xs text-neutral-300 hover:bg-neutral-800"
+      >
+        Ver vista {viewMode === 'cliente' ? 'Asesor' : 'Cliente'}
+      </button>
+
+      {viewMode === 'cliente' ? (
+        <WelcomeScreen onSelectEntryPoint={handleSelectEntryPoint} />
+      ) : (
+        <AdvisorDashboard />
+      )}
     </div>
   )
 }
