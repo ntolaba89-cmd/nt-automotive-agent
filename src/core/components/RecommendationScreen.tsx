@@ -1,14 +1,19 @@
+import { useState } from 'react'
 import type { Vehicle } from '../types/vehicle'
 
 interface RecommendationScreenProps {
   vehicles: Vehicle[]
-  onContinue: () => void
+  onContinue: (selectedVehicleId: string | undefined) => void
 }
 
 export function RecommendationScreen({
   vehicles,
   onContinue,
 }: RecommendationScreenProps) {
+  const [selectedId, setSelectedId] = useState<string | undefined>(
+    vehicles[0]?.id,
+  )
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-neutral-950 p-8">
       <div className="w-full max-w-md">
@@ -21,9 +26,15 @@ export function RecommendationScreen({
 
         <div className="mb-8 flex flex-col gap-3">
           {vehicles.map((vehicle) => (
-            <div
+            <button
               key={vehicle.id}
-              className="rounded-lg border border-neutral-800 bg-neutral-900 p-4"
+              type="button"
+              onClick={() => setSelectedId(vehicle.id)}
+              className={`rounded-lg border p-4 text-left transition-colors ${
+                selectedId === vehicle.id
+                  ? 'border-amber-600 bg-neutral-800'
+                  : 'border-neutral-800 bg-neutral-900 hover:bg-neutral-800'
+              }`}
             >
               <span className="font-medium text-neutral-100">
                 {vehicle.name}
@@ -33,13 +44,13 @@ export function RecommendationScreen({
                   {vehicle.series}
                 </span>
               )}
-            </div>
+            </button>
           ))}
         </div>
 
         <button
           type="button"
-          onClick={onContinue}
+          onClick={() => onContinue(selectedId)}
           className="w-full rounded-lg bg-amber-500 py-2.5 text-sm font-medium text-neutral-950 transition-colors hover:bg-amber-400"
         >
           Continuar

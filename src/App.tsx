@@ -23,6 +23,7 @@ import { AdvisorRequestedScreen } from './core/components/AdvisorRequestedScreen
 import { AgendaBranchScreen } from './core/components/AgendaBranchScreen'
 import { AgendaDateScreen } from './core/components/AgendaDateScreen'
 import { AgendaTimeScreen } from './core/components/AgendaTimeScreen'
+import { ConfirmationScreen } from './core/components/ConfirmationScreen'
 import type { ConversationEntryPoint, ConversationState } from './core/types/conversation'
 import { INITIAL_CONVERSATION_STATE } from './core/types/conversation'
 import type { VehicleUse } from './core/types/lead'
@@ -131,10 +132,16 @@ function App() {
     }))
   }
 
-  const handleContinueFromRecommendation = () => {
+  const handleContinueFromRecommendation = (
+    selectedVehicleId: string | undefined,
+  ) => {
     setConversation((prev) => ({
       ...prev,
       step: 'decision',
+      draftLead: {
+        ...prev.draftLead,
+        interestVehicleId: selectedVehicleId,
+      },
     }))
   }
 
@@ -177,9 +184,27 @@ function App() {
     }))
   }
 
+  const handleConfirmAppointment = (firstName: string) => {
+    const newLead = {
+      ...conversation.draftLead,
+      firstName,
+      branchId: conversation.agendaSelection.branchId,
+      appointmentStatus: 'confirmada' as const,
+    }
+    console.log('Lead creado (en memoria, sin persistir):', newLead)
+  }
+
   if (advisorRequested) {
     return <AdvisorRequestedScreen onRestart={handleRestart} />
   }
+
+  const selectedVehicle = conversation.draftLead.interestVehicleId
+    ? mockVehicles.find((v) => v.id === conversation.draftLead.interestVehicleId)
+    : undefined
+
+  const selectedBranch = conversation.agendaSelection.branchId
+    ? mockBranches.find((b) => b.id === conversation.agendaSelection.branchId)
+    : undefined
 
   return (
     <div className="relative">
@@ -230,6 +255,16 @@ function App() {
             )}
             onSelectTime={handleSelectTime}
           />
+        ) : conversation.step === 'confirmacion' &&
+          conversation.agendaSelection.date &&
+          conversation.agendaSelection.time ? (
+          <ConfirmationScreen
+            vehicle={selectedVehicle}
+            branch={selectedBranch}
+            date={conversation.agendaSelection.date}
+            time={conversation.agendaSelection.time}
+            onConfirm={handleConfirmAppointment}
+          />
         ) : (
           <div className="flex min-h-screen items-center justify-center bg-neutral-950 p-8 text-center text-neutral-300">
             <div>
@@ -238,15 +273,6 @@ function App() {
               </p>
               <p className="text-lg">
                 Step actual: <strong>{conversation.step}</strong>
-              </p>
-              <p className="text-lg">
-                Sucursal: <strong>{conversation.agendaSelection.branchId ?? '(sin definir)'}</strong>
-              </p>
-              <p className="text-lg">
-                Fecha: <strong>{conversation.agendaSelection.date ?? '(sin definir)'}</strong>
-              </p>
-              <p className="text-lg">
-                Hora: <strong>{conversation.agendaSelection.time ?? '(sin definir)'}</strong>
               </p>
               <button
                 type="button"
