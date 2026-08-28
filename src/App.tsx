@@ -27,14 +27,21 @@ import { ConfirmationScreen } from './core/components/ConfirmationScreen'
 import type { ConversationEntryPoint, ConversationState } from './core/types/conversation'
 import { INITIAL_CONVERSATION_STATE } from './core/types/conversation'
 import type { VehicleUse } from './core/types/lead'
+import type { Lead } from './core/types/lead'
+import type { Appointment } from './core/types/appointment'
 import { getNextStepAfterEntry } from './core/logic'
 
 type ViewMode = 'cliente' | 'asesor'
 
-function AdvisorDashboard() {
+interface AdvisorDashboardProps {
+  leads: Lead[]
+  appointments: Appointment[]
+}
+
+function AdvisorDashboard({ leads, appointments }: AdvisorDashboardProps) {
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null)
 
-  const selectedLead = mockLeads.find((lead) => lead.id === selectedLeadId)
+  const selectedLead = leads.find((lead) => lead.id === selectedLeadId)
 
   if (selectedLead) {
     const vehicle = mockVehicles.find((v) => v.id === selectedLead.interestVehicleId)
@@ -49,7 +56,7 @@ function AdvisorDashboard() {
     )
   }
 
-  const metrics = calculateDashboardMetrics(mockLeads, mockAppointments)
+  const metrics = calculateDashboardMetrics(leads, appointments)
 
   return (
     <div className="min-h-screen bg-neutral-950 p-8">
@@ -79,7 +86,7 @@ function AdvisorDashboard() {
         Leads Activos
       </h2>
       <div className="flex flex-col gap-3">
-        {mockLeads.map((lead) => {
+        {leads.map((lead) => {
           const vehicle = mockVehicles.find((v) => v.id === lead.interestVehicleId)
           const branch = mockBranches.find((b) => b.id === lead.branchId)
           return (
@@ -103,6 +110,8 @@ function App() {
     INITIAL_CONVERSATION_STATE,
   )
   const [advisorRequested, setAdvisorRequested] = useState(false)
+  const [leads, setLeads] = useState<Lead[]>(mockLeads)
+  const [appointments, setAppointments] = useState<Appointment[]>(mockAppointments)
 
   const handleSelectEntryPoint = (entryPoint: ConversationEntryPoint) => {
     setConversation((prev) => ({
@@ -184,14 +193,35 @@ function App() {
     }))
   }
 
-  const handleConfirmAppointment = (firstName: string) => {
-    const newLead = {
-      ...conversation.draftLead,
-      firstName,
-      branchId: conversation.agendaSelection.branchId,
-      appointmentStatus: 'confirmada' as const,
+  const handleConfirmAppointment = (firstName: string, lastName: string) => {
+    const newLeadId = `lead-${Date.now()}`
+    const newAppointmentId = `appt-${Date.now()}`
+
+    const newAppointment: Appointment = {
+      id: newAppointmentId,
+      leadId: newLeadId,
+      branchId: conversation.agendaSelection.branchId ?? '',
+      date: conversation.agendaSelection.date ?? '',
+      time: conversation.agendaSelection.time ?? '',
+      status: 'confirmada',
+      includesTestDrive: conversation.entryPoint === 'test_drive',
     }
-    console.log('Lead creado (en memoria, sin persistir):', newLead)
+
+    const newLead: Lead = {
+      id: newLeadId,
+      firstName,
+      lastName,
+      interestVehicleId: conversation.draftLead.interestVehicleId,
+      intendedUse: conversation.draftLead.intendedUse,
+      purchaseModality: conversation.draftLead.purchaseModality,
+      branchId: conversation.agendaSelection.branchId,
+      appointmentId: newAppointmentId,
+      appointmentStatus: 'confirmada',
+      purchaseIntent: true,
+    }
+
+    setAppointments((prev) => [...prev, newAppointment])
+    setLeads((prev) => [newLead, ...prev])
   }
 
   if (advisorRequested) {
@@ -251,7 +281,7 @@ function App() {
               defaultTimeSlots,
               conversation.agendaSelection.branchId,
               conversation.agendaSelection.date,
-              mockAppointments,
+              appointments,
             )}
             onSelectTime={handleSelectTime}
           />
@@ -285,7 +315,7 @@ function App() {
           </div>
         )
       ) : (
-        <AdvisorDashboard />
+        <AdvisorDashboard leads={leads} appointments={appointments} />
       )}
     </div>
   )

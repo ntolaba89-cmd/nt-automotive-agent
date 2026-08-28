@@ -8,7 +8,7 @@ interface ConfirmationScreenProps {
   branch?: Branch
   date: string
   time: string
-  onConfirm: (firstName: string) => void
+  onConfirm: (firstName: string, lastName: string) => void
 }
 
 function formatDateLabel(isoDate: string): string {
@@ -29,12 +29,15 @@ export function ConfirmationScreen({
   onConfirm,
 }: ConfirmationScreenProps) {
   const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [confirmed, setConfirmed] = useState(false)
 
+  const canConfirm = firstName.trim() !== '' && lastName.trim() !== ''
+
   const handleConfirm = () => {
-    if (!firstName.trim()) return
+    if (!canConfirm) return
     setConfirmed(true)
-    onConfirm(firstName.trim())
+    onConfirm(firstName.trim(), lastName.trim())
   }
 
   if (confirmed) {
@@ -47,7 +50,9 @@ export function ConfirmationScreen({
         <div className="w-full max-w-sm rounded-lg border border-neutral-800 bg-neutral-900 p-5 text-left text-sm">
           <div className="mb-2 flex justify-between border-b border-neutral-800 pb-2">
             <span className="text-neutral-500">Cliente</span>
-            <span className="text-neutral-200">{firstName}</span>
+            <span className="text-neutral-200">
+              {firstName} {lastName}
+            </span>
           </div>
           <div className="mb-2 flex justify-between border-b border-neutral-800 pb-2">
             <span className="text-neutral-500">Vehiculo</span>
@@ -94,10 +99,20 @@ export function ConfirmationScreen({
           placeholder="Tu nombre"
           className="mb-4 w-full rounded-lg border border-neutral-800 bg-neutral-900 p-3 text-neutral-100 placeholder:text-neutral-600 focus:border-amber-600 focus:outline-none"
         />
+        <label className="mb-2 block text-sm text-neutral-400">
+          Y tu apellido?
+        </label>
+        <input
+          type="text"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          placeholder="Tu apellido"
+          className="mb-4 w-full rounded-lg border border-neutral-800 bg-neutral-900 p-3 text-neutral-100 placeholder:text-neutral-600 focus:border-amber-600 focus:outline-none"
+        />
         <button
           type="button"
           onClick={handleConfirm}
-          disabled={!firstName.trim()}
+          disabled={!canConfirm}
           className="w-full rounded-lg bg-amber-500 py-2.5 text-sm font-medium text-neutral-950 transition-colors hover:bg-amber-400 disabled:cursor-not-allowed disabled:bg-neutral-800 disabled:text-neutral-500"
         >
           Confirmar cita
